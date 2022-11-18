@@ -3,10 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import { AccountModule } from './account/account.module';
+import { AccountModule } from './infrastructure/module/account.module';
 
 @Module({
   imports: [
@@ -30,8 +27,8 @@ import { AccountModule } from './account/account.module';
     }),
     AccountModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
 

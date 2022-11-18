@@ -6,18 +6,6 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 
-async function swagger(app: INestApplication) {
-  const options = new DocumentBuilder()
-    .setTitle("tt04")
-    .setDescription("dsc")
-    .setVersion("1.0.0")
-    .build();
-
-  const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api-docs', app, document);
-  Logger.log('Mapped {/api-docs, GET} Swagger api route', 'RouterExplorer');
-}
-
 async function bootstrap() {
 
   initializeTransactionalContext();
@@ -30,4 +18,17 @@ async function bootstrap() {
 
   await app.listen(3000);
 }
+
+async function swagger(app: INestApplication) {
+  const options = new DocumentBuilder()
+    .setTitle("tt04")
+    .setDescription("dsc")
+    .setVersion("1.0.0")
+    .build();
+
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api-docs', app, document);
+  Logger.log('Mapped {/api-docs, GET} Swagger api route', 'RouterExplorer');
+}
+
 bootstrap();

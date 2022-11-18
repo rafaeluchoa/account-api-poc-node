@@ -3,21 +3,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { randomUUID } from 'crypto';
 import { Transactional } from 'typeorm-transactional';
 import { Repository } from 'typeorm/repository/Repository';
-import { AccountEntity } from './account.entity';
+import { AccountEntity } from '../../domain/model/account.entity';
 
 @Injectable()
-export class AccountService {
+export class CreateAccountUseCase {
 
     constructor(
         @InjectRepository(AccountEntity)
         readonly accountRepository: Repository<AccountEntity>
     ) { }
-
-    @Transactional()
-    async list(): Promise<AccountEntity[]> {
-        this.accountRepository.create()
-        return await this.accountRepository.find()
-    }
 
     @Transactional()
     async create(): Promise<AccountEntity> {

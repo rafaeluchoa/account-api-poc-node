@@ -1,4 +1,4 @@
-import { AccountEntity } from "./account.entity";
+import { AccountEntity } from "../../../domain/model/account.entity";
 import { ApiProperty } from '@nestjs/swagger';
 
 export class AccountDto {

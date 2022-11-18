@@ -19,7 +19,7 @@ export class AccountController {
     return data.map(i => new AccountDto(i));
   }
 
-  @Post()
+  @Post('create')
   @ApiOperation({
     summary: 'Creates a Account',
   })
@@ -29,7 +29,7 @@ export class AccountController {
   ): Promise<CreateResponseDto> {
     const data = await this.createUseCase.create()
     return {
-      account: data 
+      account: new AccountDto(data) 
     }
   }
 }

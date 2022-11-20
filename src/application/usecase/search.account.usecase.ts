@@ -12,7 +12,10 @@ export class SearchAccountUseCase {
     ) { }
 
     async list(): Promise<Account[]> {
-        this.accountRepository.create()
-        return await this.accountRepository.find()
+        return await this.accountRepository.find();
+    }
+
+    async find(id: string): Promise<Account> {
+        return await this.accountRepository.findOneBy({id: id });
     }
 }

@@ -1,7 +1,13 @@
 import { Module } from '@nestjs/common';
+
+// typeorm
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { addTransactionalDataSource } from 'typeorm-transactional';
+
+// graphql
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { GraphQLModule } from '@nestjs/graphql';
 
 import { AccountModule } from './infrastructure/module/account.module';
 
@@ -25,7 +31,11 @@ import { AccountModule } from './infrastructure/module/account.module';
         return addTransactionalDataSource(new DataSource(options));
       },
     }),
-    AccountModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+    }),
+    AccountModule
   ],
   controllers: [],
   providers: [],

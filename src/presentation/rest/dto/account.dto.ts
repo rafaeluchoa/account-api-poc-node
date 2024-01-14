@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Account } from "../../../domain/model/account";
+import { Account } from "../../../core/domain/model/account";
 
 export class AccountDto {
 

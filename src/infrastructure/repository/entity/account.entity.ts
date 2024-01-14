@@ -1,5 +1,5 @@
 import { EntitySchema } from 'typeorm';
-import { Account } from '../../../domain/model/account';
+import { Account } from '../../../core/domain/model/account';
 import { BaseEntity } from './base.entity'
 
 export const AccountEntity = new EntitySchema<Account>({

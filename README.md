@@ -11,4 +11,4 @@ Com:
 - TypeORM
 - GraphQL - Apollo
 - API test - e2e-spec - jest
-- RabbitMQ - CDC com pg-bifrost
+- TODO: RabbitMQ - CDC

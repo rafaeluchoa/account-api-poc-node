@@ -1,9 +1,9 @@
+import { INestApplication } from '@nestjs/common';
 import 'jest';
 import * as request from 'supertest';
-import { HttpStatus, INestApplication } from '@nestjs/common';
 import { bootstrap } from '../../src/bootstrap';
-import { CreateResponseDto } from '../../src/presentation/rest/dto/create.response.dto'
 import { CreateRequestDto } from '../../src/presentation/rest/dto/create.request.dto';
+import { CreateResponseDto } from '../../src/presentation/rest/dto/create.response.dto';
 
 async function post(app: INestApplication, uri: string, req: any) {
   const response = await request(app.getHttpServer())

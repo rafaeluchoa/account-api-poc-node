@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { ApiOperation, ApiCreatedResponse } from '@nestjs/swagger';
-import { SearchAccountUseCase } from '../../application/usecase/search.account.usecase';
-import { CreateAccountUseCase } from '../../application/usecase/create.account.usecase';
+import { SearchAccountUseCase } from '../../core/application/usecase/search.account.usecase';
+import { CreateAccountUseCase } from '../../core/application/usecase/create.account.usecase';
 import { AccountDto } from './dto/account.dto';
 import { CreateRequestDto } from './dto/create.request.dto';
 import { CreateResponseDto } from './dto/create.response.dto';

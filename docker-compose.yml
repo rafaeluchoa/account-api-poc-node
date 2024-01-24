@@ -5,10 +5,6 @@ services:
   postgresql:
     image: postgres:15.0-alpine
     container_name: 'postgresql'
-    command:
-      - "postgres"
-      - "-c"
-      - "wal_level=logical"
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: '123'
@@ -17,47 +13,3 @@ services:
       - '5432:5432'
     restart: always
 
-  rabbitmq:
-    image: rabbitmq:3.11.1-management-alpine
-    container_name: 'rabbitmq'
-    ports:
-      - 5672:5672
-      - 15672:15672
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:15672"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-  pg-bifrost:
-    image: nextdoor/pg-bifrost:1.5.0
-    container_name: 'pg-bifrost'
-    command: /pg-bifrost replicate rabbitmq
-    environment:
-      PGUSER: 'postgres'
-      PGPASSWORD: '123'
-      PGHOST: 'postgresql'
-      PGPORT: '5432'
-      PGDATABASE: 'testdb'
-      BIFROST_RABBITMQ_URL: 'amqp://guest:guest@rabbitmq:5672/'
-      BIFROST_RABBITMQ_EXCHANGE_NAME: 'amq.topic'
-      BIFROST_RABBITMQ_BATCH_SIZE: 1
-      CREATE_SLOT: 'true' 
-      BATCHER_ROUTING_METHOD: 'partition'
-      PARTITION_METHOD: 'tablename'
-      PARTITION_COUNT: 1
-      WORKERS: 1
-      CLIENT_BUFFER_SIZE: 1
-      BATCH_FLUSH_UPDATE_AGE: 1
-      BATCH_FLUSH_MAX_AGE: 1
-      BATCH_QUEUE_DEPTH: 1
-      # WHITELIST_REGEX: '.*_event'
-    depends_on:
-      postgresql:
-        condition: service_started
-      rabbitmq:
-        condition: service_started
-    links: 
-      - rabbitmq
-      - postgresql
-    restart: on-failure

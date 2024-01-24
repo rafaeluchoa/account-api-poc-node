@@ -3,12 +3,12 @@
 Prova de Conceito de Arquitetura com Node/NestJS
 
 Com:
-- Node 18 - Typescript
-- NestJS 9, 
-- REST, Swagger
-- GraphQL - Apollo
-- TypeORM
-- PostgreSQL 15
-- RabbitMQ - CDC com pg-bifrost
-- API test - e2e-spec - jest
 - Clean Architecture
+- Node 20 - Typescript 5
+- NestJS 10, 
+- PostgreSQL 15
+- REST, Swagger
+- TypeORM
+- GraphQL - Apollo
+- API test - e2e-spec - jest
+- RabbitMQ - CDC com pg-bifrost

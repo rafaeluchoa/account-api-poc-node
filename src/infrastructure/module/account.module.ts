@@ -4,11 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AccountEntity } from '../repository/entity/account.entity';
 
-import { AccountController } from '../../presentation/rest/account.controller';
 import { AccountResolver } from '../../presentation/graphql/account.resolver';
+import { AccountController } from '../../presentation/rest/account.controller';
 
-import { SearchAccountUseCase } from '../../core/application/usecase/search.account.usecase';
 import { CreateAccountUseCase } from '../../core/application/usecase/create.account.usecase';
+import { SearchAccountUseCase } from '../../core/application/usecase/search.account.usecase';
 
 
 @Module({

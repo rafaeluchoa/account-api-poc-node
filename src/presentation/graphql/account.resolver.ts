@@ -1,6 +1,6 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
+import { SearchAccountUseCase } from '../../core/application/usecase/search.account.usecase';
 import { AccountModel } from './model/account.model';
-import { SearchAccountUseCase } from '../../core/application/usecase/search.account.usecase'
 
 @Resolver(of => AccountModel)
 export class AccountResolver {

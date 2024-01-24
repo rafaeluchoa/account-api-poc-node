@@ -23,7 +23,7 @@ export async function bootstrap() : Promise<INestApplication> {
 
 async function swagger(app: INestApplication) {
   const options = new DocumentBuilder()
-    .setTitle("tt04")
+    .setTitle("tt05")
     .setDescription("dsc")
     .setVersion("1.0.0")
     .build();

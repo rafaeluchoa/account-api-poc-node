@@ -3,13 +3,6 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@nestjs/graphql",
-        "options": {
-          "introspectComments": true
-        }
-      }
-    ]
+    "deleteOutDir": true
   }
 }

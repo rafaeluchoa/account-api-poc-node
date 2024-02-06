@@ -1,18 +1,8 @@
 import { INestApplication } from '@nestjs/common';
-import 'jest';
-import * as request from 'supertest';
-import { bootstrap } from '../../src/bootstrap';
-import { CreateRequestDto } from '../../src/presentation/rest/dto/create.request.dto';
-import { CreateResponseDto } from '../../src/presentation/rest/dto/create.response.dto';
-
-async function post(app: INestApplication, uri: string, req: any) {
-  const response = await request(app.getHttpServer())
-      .post(uri)
-      .send(req)
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/);
-  return response.body
-}
+import { bootstrap } from '../../../src/bootstrap';
+import { CreateRequestDto } from '../../../src/presentation/rest/dto/create.request.dto';
+import { CreateResponseDto } from '../../../src/presentation/rest/dto/create.response.dto';
+import { post } from '../base/post';
 
 describe('Account', () => {
 

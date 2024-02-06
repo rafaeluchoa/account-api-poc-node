@@ -1,12 +1,13 @@
-import { NestFactory } from '@nestjs/core';
 import { INestApplication, Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import "reflect-metadata";
 import { initializeTransactionalContext } from 'typeorm-transactional';
-import "reflect-metadata"
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
+import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 
-export async function bootstrap() : Promise<INestApplication> {
+export async function bootstrap(): Promise<INestApplication> {
 
   initializeTransactionalContext();
 
@@ -16,7 +17,9 @@ export async function bootstrap() : Promise<INestApplication> {
 
   swagger(app);
 
-  await app.listen(3000);
+  const configService = app.get(ConfigService);
+  
+  await app.listen(configService.get('http.port'));
 
   return app
 }

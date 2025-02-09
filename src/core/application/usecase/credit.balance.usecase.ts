@@ -8,6 +8,7 @@ import { Transaction } from '../../domain/model/transaction';
 import { randomUUID } from 'crypto';
 import { TransactionType } from '../../domain/model/transaction.type';
 import { SearchAccountUseCase } from './search.account.usecase';
+import { AccountNotFoundException } from '../../exception/AccountNotFoundException';
 
 @Injectable()
 export class CreditBalanceUseCase {
@@ -23,6 +24,9 @@ export class CreditBalanceUseCase {
   @Transactional()
   async credit(accountId: string, amount: number) {
     const account = await this.searchAccountUseCase.find(accountId);
+    if (!account) {
+      throw new AccountNotFoundException(accountId);
+    }
 
     let balance = await this.searchUseCase.findByAccount(accountId);
     balance.credit(amount);

@@ -6,6 +6,7 @@ import { initializeTransactionalContext } from 'typeorm-transactional';
 
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
+import { ExceptionHandler } from './infrastructure/presentation/ExceptionHandler';
 
 export async function bootstrap(): Promise<INestApplication> {
   initializeTransactionalContext();
@@ -15,6 +16,8 @@ export async function bootstrap(): Promise<INestApplication> {
   });
 
   await swagger(app);
+
+  app.useGlobalFilters(new ExceptionHandler());
 
   const configService = app.get(ConfigService);
 

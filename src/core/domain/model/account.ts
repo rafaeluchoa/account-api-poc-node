@@ -1,6 +1,5 @@
 export class Account {
   id: string;
-  createdAt?: Date;
-  balance: number;
+  createdAt: Date;
   customerId: string;
 }

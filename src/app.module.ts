@@ -17,9 +17,9 @@ import { AccountModule } from './infrastructure/module/account.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      expandVariables: true, 
+      expandVariables: true,
       load: [configuration],
-    }), 
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -33,8 +33,8 @@ import { AccountModule } from './infrastructure/module/account.module';
           password: config.get('db.password'),
           synchronize: true,
           logging: true,
-          autoLoadEntities: true
-        }
+          autoLoadEntities: true,
+        };
       },
       async dataSourceFactory(options) {
         return addTransactionalDataSource(new DataSource(options));
@@ -44,10 +44,9 @@ import { AccountModule } from './infrastructure/module/account.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
-    AccountModule
+    AccountModule,
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule {}
-

@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import { Account } from '../../../core/domain/model/account';
-import { BaseEntity } from './base.entity'
+import { BaseEntity } from './base.entity';
 
 export const AccountEntity = new EntitySchema<Account>({
   name: 'Account',
@@ -8,8 +8,8 @@ export const AccountEntity = new EntitySchema<Account>({
   target: Account,
   columns: {
     ...BaseEntity,
-    balance: {
-      type: 'float',
+    customerId: {
+      type: 'text',
     },
   },
   orderBy: {

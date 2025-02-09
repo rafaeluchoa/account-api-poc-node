@@ -1,4 +1,4 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Account } from '../../../core/domain/model/account';
 
 @ObjectType()
@@ -18,7 +18,6 @@ export class AccountModel {
   constructor(data: Account) {
     this.id = data.id;
     this.createdAt = data.createdAt;
-    this.balance = data.balance;
-    this.customerId = data.customerId
+    this.customerId = data.customerId;
   }
 }

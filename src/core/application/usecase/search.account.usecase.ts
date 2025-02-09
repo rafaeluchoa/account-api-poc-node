@@ -5,17 +5,16 @@ import { Account } from '../../domain/model/account';
 
 @Injectable()
 export class SearchAccountUseCase {
+  constructor(
+    @InjectRepository(Account)
+    readonly accountRepository: Repository<Account>,
+  ) {}
 
-    constructor(
-        @InjectRepository(Account)
-        readonly accountRepository: Repository<Account>
-    ) { }
+  async list(): Promise<Account[]> {
+    return await this.accountRepository.find();
+  }
 
-    async list(): Promise<Account[]> {
-        return await this.accountRepository.find();
-    }
-
-    async find(id: string): Promise<Account> {
-        return await this.accountRepository.findOneBy({id: id });
-    }
+  async find(id: string): Promise<Account> {
+    return await this.accountRepository.findOneBy({ id: id });
+  }
 }
